@@ -1,5 +1,9 @@
 package com.api.parkingcontrtol.service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +35,18 @@ public class ParkingSpotService {
 	public boolean existsByApartamentAndBlock(String apartament, String block) {
 		return parkingSpotRepository.existsByApartamentAndBlock(apartament, block);
 	}
-	
-	
+
+	public List<ParkingSpotModel> findAll() {
+		return parkingSpotRepository.findAll();
+	}
+
+	public Optional<ParkingSpotModel> findById(UUID id) {
+		return parkingSpotRepository.findById(id);
+	}
+
+	@Transactional
+	public void delete(ParkingSpotModel parkingSpotModel) {
+		parkingSpotRepository.delete(parkingSpotModel);
+		
+	}
 }
